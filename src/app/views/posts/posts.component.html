@@ -1,0 +1,74 @@
+
+<p class="container text-center h1">Posts Works!</p>
+
+<form class="container my-5" 
+#myForm="ngForm" 
+(ngSubmit)="addPost(myForm.value);myForm.reset()"
+>
+  <div class="form-row">
+    <div class="col">
+      <input 
+      type="text" 
+      class="form-control"
+      placeholder="Title"
+      id="title"
+      name="title"
+      ngModel
+      >
+    </div>
+    <div class="col">
+      <input 
+      type="text" 
+      class="form-control" 
+      placeholder="Body"
+      id="body"
+      name="body"
+      ngModel
+      >
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary m-2">Add</button>
+</form>
+
+
+
+
+
+
+
+
+<table class="table container">
+    <thead>
+      <tr>
+        <!-- <th scope="col">UserId</th>
+        <th scope="col">Id</th> -->
+        <th scope="col">Title</th>
+        <th scope="col">Body</th>
+        <th scope="col">View</th>
+        <th scope="col">Delete</th>
+        <th scope="col">Update</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let post of posts">
+            <!-- <th>{{post.userId}}</th>
+            <th>{{post.id}}</th> -->
+            <th>{{post.title}}</th>
+            <th>{{post.body}}</th>
+            <th>
+              <a routerLink="/singlePost/{{post.id}}">
+                <button class="btn btn-primary">View</button>
+              </a>
+            </th>
+            <th>
+              <button class="btn btn-primary" (click)="deletePost(post)">Delete</button>
+            </th>
+            <th>
+              <a routerLink="/updatePost/{{post.id}}">
+                <button class="btn btn-primary">Update</button>
+              </a>
+            </th>
+          </tr>
+      
+    </tbody>
+  </table>
